@@ -39,31 +39,36 @@ const teamMembers = [
 
 
 // seleziono elemento html
-const ulTemp = document.getElementById("outputTemp");
+const outputTemp = document.getElementById("outputTemp");
 
 
 
 let items = "";
-// output temporaneo
+// genero le carte dove con il for prendo ogni elemento
 
 for (let i = 0; i < teamMembers.length; i++) {
   let membro = teamMembers[i];
 
 
-  const { name, role, email, img} = membro;
+  const { name, role, email, img } = membro;
   console.log(name, role, email, img);
 
 
-  items = items + 
-  `<li>
-    nome: ${name} <br>
-    ruolo: ${role} <br>
-    email: ${email} <br>
-    <img src="${img}" alt="${name}">
-  </li>`
+items = items + `
+  <div class="col-md-4">
+    <div class="card h-100">
+      <img src="${img}" class="card-img-top" alt="${name}">
+      <div class="card-body">
+        <h5 class="card-title">${name}</h5>
+        <p class="card-text"><strong>Ruolo:</strong> ${role}</p>
+        <p class="card-text"><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+      </div>
+    </div>
+  </div>
+`;
 }
 
 
 // output
 
-ulTemp.innerHTML = items;
+outputTemp.innerHTML = items;
